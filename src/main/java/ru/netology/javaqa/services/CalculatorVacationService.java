@@ -6,12 +6,11 @@ public class CalculatorVacationService {
         int money = 0; // количество денег на счету
 
         for (int month = 1; month <= 12; month++) {
-            int balans = money - expenses; //остаток накоплений после обязательных месячных трат
             if (money >= threshold) { // решаем как проводим месяц: работать или отдыхать?
                 count++; // увеличиваем счётчик месяцев отдыха
-                money = balans / 3;
+                money = (money - expenses) / 3;
             } else {
-                money = balans + income;
+                money = money - expenses + income;
             }
         }
         return count;
